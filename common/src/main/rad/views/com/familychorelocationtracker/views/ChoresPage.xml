@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<border xsi:noNamespaceSchemaLocation="ChoresPage.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <title>Chores</title>
+    <use-taglib class="com.codename1.twitterui.TagLibrary"/>
+    <globalTabs layout-constraint="south" selectedTab="com.familychorelocationtracker.FamilyChoreApp.CHORES_TAB"/>
+
+</border>

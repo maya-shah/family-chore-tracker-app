@@ -10,10 +10,5 @@
         <module name="familychoreapp-common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="familychoreapp" target="8" />
-      <module name="familychoreapp-common" target="1.8" />
-      <module name="familychoreapp-javase" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
