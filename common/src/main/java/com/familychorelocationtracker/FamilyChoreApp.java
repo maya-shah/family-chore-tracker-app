@@ -199,9 +199,9 @@ public class FamilyChoreApp extends ApplicationController {
             // The client is logged in.  We hardcode the userprofile here as me
             // but in real app you would have the profile created based on who is logged in.
             TWTUserProfile userProfile = new TWTUserProfileImpl();
-            userProfile.setName("Steve Hannah");
-            userProfile.setIdentifier("@shannah78");
-            userProfile.setThumbnailUrl("https://www.codenameone.com/img/steve.jpg");
+            userProfile.setName("Bob Smith");
+//            userProfile.setIdentifier("@shannah78");
+//            userProfile.setThumbnailUrl("https://www.codenameone.com/img/steve.jpg");
             addLookup(TWTUserProfile.class, userProfile);
 
         }

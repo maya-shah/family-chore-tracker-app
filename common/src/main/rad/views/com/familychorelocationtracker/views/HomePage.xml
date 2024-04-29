@@ -10,7 +10,6 @@
 
     <collapsibleHeader scrollableComponent="#tweetList">
         <twtTitle>
-            <twtsearchButton rad-href="#SearchForm" rad-href-trigger="TWTSearchButton.SEARCH_ACTION"/>
         </twtTitle>
     </collapsibleHeader>
     <sidebar>

@@ -1,7 +1,29 @@
 <?xml version="1.0"?>
-<border xsi:noNamespaceSchemaLocation="LocationsPage.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<y view-controller="com.familychorelocationtracker.controllers.LocationsPageViewController"
+   xsi:noNamespaceSchemaLocation="LocationsPage.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <title>Locations</title>
     <use-taglib class="com.codename1.twitterui.TagLibrary"/>
-    <globalTabs layout-constraint="south" selectedTab="com.familychorelocationtracker.FamilyChoreApp.LOCATIONS_TAB"/>
 
-</border>
+
+
+<!--        <MapView-->
+<!--                provider="OSM"-->
+<!--                showMyLocation="true"-->
+<!--                zoom="10"-->
+<!--        />-->
+
+
+    <!--<component type="MapComponent" id="mapComponent">
+        <property key="displayName" value="Map"/>
+        <events>
+            <event type="action"
+                   actionListener="com.familychorelocationtracker.controllers.LocationsPageViewController::onMapClick"/>
+        </events>
+    </component>-->
+
+
+
+    <globalTabs layout-constraint="south"
+                selectedTab="com.familychorelocationtracker.FamilyChoreApp.LOCATIONS_TAB"/>
+
+</y>
