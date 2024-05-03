@@ -87,12 +87,12 @@ public class FamilyChoreApp extends ApplicationController {
                 System.out.println("Home was clicked");
             });
 
-        ActionNode.builder()
-            .label("Locations")
-            .icon(FontImage.MATERIAL_LOCATION_ON)
-            .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
-                System.out.println("Locations was clicked");
-            });
+//        ActionNode.builder()
+//            .label("Locations")
+//            .icon(FontImage.MATERIAL_LOCATION_ON)
+//            .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
+//                System.out.println("Locations was clicked");
+//            });
 
         ActionNode.builder()
             .label("Chores")
