@@ -3,7 +3,6 @@ package com.familychorelocationtracker;
 import com.codename1.maps.BoundingBox;
 import com.codename1.maps.Coord;
 import com.codename1.maps.MapComponent;
-import com.codename1.maps.MapListener;
 import com.codename1.maps.providers.OpenStreetMapProvider;
 import com.codename1.ui.Button;
 import com.codename1.ui.Component;
@@ -16,13 +15,10 @@ import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.LayeredLayout;
-import com.codename1.ui.plaf.UIManager;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 
 
 public class LocationsPageView extends Container {
@@ -96,9 +92,6 @@ public class LocationsPageView extends Container {
         buttons.add(zoomOut);
 
 
-//        buttons.add(BorderLayout.WEST, zoomIn);
-//        buttons.add(BorderLayout.EAST, zoomOut);
-
         return buttons;
     }
 
@@ -159,7 +152,6 @@ public class LocationsPageView extends Container {
 //            addLegendItem(legendContainer, marker, index);
             index++;
         }
-
 
 
         mapComponent.zoomTo(BoundingBox.create(markerCoordinates.toArray(new Coord[0])));
