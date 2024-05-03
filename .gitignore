@@ -1,3 +1,5 @@
 target
 *.xsd
 .idea
+.DS_Store
+
