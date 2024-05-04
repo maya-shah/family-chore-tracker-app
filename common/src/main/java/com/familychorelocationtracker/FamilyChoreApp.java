@@ -5,11 +5,14 @@ import com.codename1.io.Log;
 import com.codename1.rad.controllers.ApplicationController;
 import com.codename1.rad.controllers.ControllerEvent;
 import com.codename1.rad.nodes.ActionNode;
+import com.codename1.rad.ui.ViewContext;
+import com.codename1.twitterui.controllers.SettingsFormController;
 import com.codename1.twitterui.models.TWTUserProfile;
 import com.codename1.twitterui.models.TWTUserProfileImpl;
 import com.codename1.twitterui.views.TWTGlobalTabs;
 import com.codename1.twitterui.views.TWTSideBarView;
 import com.codename1.ui.FontImage;
+import com.familychorelocationtracker.controllers.SettingsPageFormController;
 import com.familychorelocationtracker.services.TweetAppClient;
 import com.familychorelocationtracker.views.ChoresPageController;
 import com.familychorelocationtracker.views.HomePageController;
@@ -95,9 +98,7 @@ public class FamilyChoreApp extends ApplicationController {
         ActionNode.builder()
                 .label("Chores")
                 .icon(FontImage.MATERIAL_TASK)
-                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
-                    System.out.println("Chores was clicked");
-                })
+                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> System.out.println("Chores was clicked"))
                 .addActionListener(evt -> {
                     evt.consume();
                     TWTGlobalTabs.showTab(
@@ -109,15 +110,13 @@ public class FamilyChoreApp extends ApplicationController {
         ActionNode.builder()
                 .label("Settings")
                 .icon(FontImage.MATERIAL_SETTINGS)
-                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
-                    System.out.println("Settings was clicked");
-                })
+                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt ->
+                        System.out.println("Settings was clicked")
+                )
                 .addActionListener(evt -> {
                     evt.consume();
-                    TWTGlobalTabs.showTab(
-                            evt,
-                            new SettingsPageController(ApplicationController.getApplicationController(evt))
-                    );
+                    new SettingsPageFormController(getCurrentFormController()).show();
+
                 });
 
         ActionNode.builder().
