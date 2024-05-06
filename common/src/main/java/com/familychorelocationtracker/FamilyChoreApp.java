@@ -18,7 +18,6 @@ import com.familychorelocationtracker.views.ChoresPageController;
 import com.familychorelocationtracker.views.HomePageController;
 import com.familychorelocationtracker.views.InboxPageController;
 import com.familychorelocationtracker.views.LocationsPageController;
-import com.familychorelocationtracker.views.SettingsPageController;
 import com.familychorelocationtracker.views.WelcomePageController;
 
 import static com.codename1.rad.util.NonNull.with;
@@ -88,12 +87,17 @@ public class FamilyChoreApp extends ApplicationController {
                     System.out.println("Home was clicked");
                 });
 
-//        ActionNode.builder()
-//            .label("Locations")
-//            .icon(FontImage.MATERIAL_LOCATION_ON)
-//            .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
-//                System.out.println("Locations was clicked");
-//            });
+        ActionNode.builder()
+            .label("Locations")
+            .icon(FontImage.MATERIAL_LOCATION_ON)
+            .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> System.out.println("Locations was clicked"))
+                .addActionListener(evt -> {
+                    evt.consume();
+                    TWTGlobalTabs.showTab(
+                            evt,
+                            new LocationsPageController(ApplicationController.getApplicationController(evt))
+                    );
+                });
 
         ActionNode.builder()
                 .label("Chores")
@@ -127,12 +131,6 @@ public class FamilyChoreApp extends ApplicationController {
                 });
 
         ActionNode.builder()
-                .label("Profile")
-                .icon(FontImage.MATERIAL_ACCOUNT_CIRCLE)
-                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
-                });
-
-        ActionNode.builder()
                 .label("Create new account")
                 .addToController(this, TWTSideBarView.SIDEBAR_TOP_OVERFLOW_MENU, evt -> {
                 });
@@ -156,7 +154,8 @@ public class FamilyChoreApp extends ApplicationController {
                 });
 
         ActionNode.builder()
-                .label("Settings and privacy")
+                .label("Settings and Privacy")
+                .icon(FontImage.MATERIAL_SETTINGS)
                 .addToController(this, TWTSideBarView.SIDEBAR_SETTINGS_ACTIONS, evt -> {
                 });
 
@@ -165,36 +164,15 @@ public class FamilyChoreApp extends ApplicationController {
                 .addToController(this, TWTSideBarView.SIDEBAR_SETTINGS_ACTIONS, evt -> {
                 });
 
-        ActionNode.builder()
-                .icon(FontImage.MATERIAL_LIGHTBULB_OUTLINE)
-                .addToController(this, TWTSideBarView.SIDEBAR_BOTTOM_LEFT_ACTIONS, evt -> {
-                });
-
-        ActionNode.builder()
-                .icon(FontImage.MATERIAL_SCANNER)
-                .addToController(this, TWTSideBarView.SIDEBAR_BOTTOM_RIGHT_ACTIONS, evt -> {
-                });
-
-        ActionNode.builder()
-                .icon(FontImage.MATERIAL_ACCOUNT_CIRCLE)
-                .addToController(this, TWTSideBarView.SIDEBAR_TOP_ACTIONS, evt -> {
-                });
-
 //        ActionNode.builder()
-//                .icon(FontImage.MATERIAL_ACCOUNT_BALANCE_WALLET)
-//                .addToController(this, TWTSideBarView.SIDEBAR_TOP_ACTIONS, evt -> {});
+//                .icon(FontImage.MATERIAL_LIGHTBULB_OUTLINE)
+//                .addToController(this, TWTSideBarView.SIDEBAR_BOTTOM_LEFT_ACTIONS, evt -> {
+//                });
 
 
         ActionNode.builder()
-                .icon("Following")
-                .label("311")
-                .addToController(this, TWTSideBarView.SIDEBAR_STATS, evt -> {
-                });
-
-        ActionNode.builder()
-                .icon("Followers")
-                .label("344")
-                .addToController(this, TWTSideBarView.SIDEBAR_STATS, evt -> {
+                .icon(FontImage.MATERIAL_EXIT_TO_APP)
+                .addToController(this, TWTSideBarView.SIDEBAR_BOTTOM_RIGHT_ACTIONS, evt -> {
                 });
 
 
@@ -220,8 +198,6 @@ public class FamilyChoreApp extends ApplicationController {
             // but in real app you would have the profile created based on who is logged in.
             TWTUserProfile userProfile = new TWTUserProfileImpl();
             userProfile.setName("Bob Smith");
-//            userProfile.setIdentifier("@shannah78");
-//            userProfile.setThumbnailUrl("https://www.codenameone.com/img/steve.jpg");
             addLookup(TWTUserProfile.class, userProfile);
 
         }

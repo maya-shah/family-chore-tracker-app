@@ -1,27 +1,26 @@
 <?xml version="1.0"?>
-<border view-controller="com.familychorelocationtracker.controllers.HomePageViewController"
-        xsi:noNamespaceSchemaLocation="HomePage.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<border xsi:noNamespaceSchemaLocation="HomePage.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <title hidden="true"/>
 
     <use-taglib class="com.codename1.twitterui.TagLibrary"/>
     <import>
-        import com.familychorelocationtracker.providers.NewsFeedProvider;
+        import com.familychorelocationtracker.components.TileComponents;
     </import>
 
-    <collapsibleHeader scrollableComponent="#tweetList">
+
+    <collapsibleHeader>
         <twtTitle>
         </twtTitle>
     </collapsibleHeader>
+
     <sidebar>
         <twtSideBarView/>
     </sidebar>
 
+    <tileComponents layout-constraint="center" title="6">
 
-    <tweetListView
-            name="tweetList"
-            layout-constraint="center"
-            provider="NewsFeedProvider.class"
-    />
+    </tileComponents>
+
 
     <globalTabs layout-constraint="south" selectedTab="com.familychorelocationtracker.FamilyChoreApp.HOME_TAB"/>
 

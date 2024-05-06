@@ -22,9 +22,9 @@ import java.util.List;
 
 
 public class LocationsPageView extends Container {
-    private final MapComponent mapComponent = new MapComponent(new OpenStreetMapProvider());
-
     private int zoom;
+
+    private final MapComponent mapComponent = new MapComponent(new OpenStreetMapProvider());
 
     private final Container legendContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 
@@ -52,8 +52,7 @@ public class LocationsPageView extends Container {
                 BorderLayout.centerTotalBelow(mapComponent), BorderLayout.east(BorderLayout.north(buttons)), BorderLayout.center(colorLabel));
 
 
-        mapContainer.setPreferredSize(new Dimension(400, 1200));
-
+        mapContainer.setPreferredSize(new Dimension(400, 1150));
 
         mapComponent.setPreferredSize(new Dimension(1200, 850));
 
@@ -63,50 +62,11 @@ public class LocationsPageView extends Container {
 
     }
 
-    private Container getButtons() {
-        Container buttons = new Container(new BoxLayout(BoxLayout.X_AXIS));
-
-        Button zoomIn = new Button("+");
-        Button zoomOut = new Button("-");
-
-        zoomIn.getAllStyles().setBgColor(0xffffff); // Set background color to black
-        zoomIn.getAllStyles().setFgColor(0x000000); // Set foreground color to white
-
-        zoomOut.getAllStyles().setBgColor(0xffffff); // Set background color to black
-        zoomOut.getAllStyles().setFgColor(0x000000); // Set foreground color to white
-
-        zoomIn.getAllStyles().setBgTransparency(150);
-        zoomOut.getAllStyles().setBgTransparency(150);
-
-
-        zoomIn.addActionListener(e -> {
-            mapComponent.zoomIn();
-            mapComponent.revalidate();
-        });
-        zoomOut.addActionListener(e -> {
-            mapComponent.zoomOut();
-            mapComponent.revalidate();
-        });
-
-        buttons.add(zoomIn);
-        buttons.add(zoomOut);
-
-
-        return buttons;
-    }
 
     public void setMapComponent(int zoom) {
         this.zoom = zoom;
 
         mapComponent.setZoomLevel(zoom);
-
-//        mapComponent.addMapListener(new MapListener() {
-//            @Override
-//            public void mapPositionUpdated(Component source, int zoom, Coord center) {
-//                // Handle map position updates dynamically
-//                System.out.println("Map position updated - Zoom: " + zoom + ", Center: " + center);
-//            }
-//        });
 
         addPersonMarker(mapComponent, new Marker(
                 "Evelyn",
@@ -136,15 +96,6 @@ public class LocationsPageView extends Container {
                 new Coord(50.72527398274362, -3.5323839083222404)
         ));
 
-
-//        mapComponent.addMapListener(new MapListener() {
-//            @Override
-//            public void mapPositionUpdated(Component source, int zoom, Coord center) {
-//                if (mapComponent.even) {}
-//            }
-//        });
-
-
         int index = 0;
 
         for (Marker marker : markers) {
@@ -160,7 +111,6 @@ public class LocationsPageView extends Container {
 
     }
 
-
     // Override the map's paint method to draw the markers
     @Override
     public void paint(Graphics g) {
@@ -175,6 +125,39 @@ public class LocationsPageView extends Container {
 
     }
 
+    private Container getButtons() {
+        Container buttons = new Container(new BoxLayout(BoxLayout.X_AXIS));
+
+        Button zoomIn = new Button("+");
+        Button zoomOut = new Button("-");
+
+        zoomIn.getAllStyles().setBgColor(0xffffff); // Set background color to white
+        zoomIn.getAllStyles().setFgColor(0x000000); // Set foreground color to black
+
+        zoomOut.getAllStyles().setBgColor(0xffffff); // Set background color to white
+        zoomOut.getAllStyles().setFgColor(0x000000); // Set foreground color to black
+
+        // Set transparency levels for the background of the buttons
+        zoomIn.getAllStyles().setBgTransparency(150);
+        zoomOut.getAllStyles().setBgTransparency(150);
+
+
+        zoomIn.addActionListener(e -> {
+            mapComponent.zoomIn();
+            mapComponent.revalidate();
+        });
+
+        zoomOut.addActionListener(e -> {
+            mapComponent.zoomOut();
+            mapComponent.revalidate();
+        });
+
+        buttons.add(zoomIn);
+        buttons.add(zoomOut);
+
+
+        return buttons;
+    }
 
     // Method to add a circular marker at a specific location
     private void addPersonMarker(MapComponent map, Marker marker) {
@@ -195,7 +178,6 @@ public class LocationsPageView extends Container {
         g.setColor(color); // Set marker color to red
         g.fillArc(x - radius, y - radius, radius * 2, radius * 2, 0, 360);
     }
-
 
     private long getDistance(int index) {
         return MapComponent.distance(markers.get(0).getLatitude(),
