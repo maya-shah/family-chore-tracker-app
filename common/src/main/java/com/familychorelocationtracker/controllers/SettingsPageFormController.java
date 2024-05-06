@@ -22,7 +22,7 @@ import java.util.Collection;
 
 
 public class SettingsPageFormController extends FormController {
-    private static final DefaultListModel<String> items = new DefaultListModel<>
+    private static final DefaultListModel<String> countries = new DefaultListModel<>
             (Arrays.asList("Canada", "United States", "Mexico", "Spain", "England", "France"));
 
     public static final ActionNode username = action(
@@ -45,7 +45,7 @@ public class SettingsPageFormController extends FormController {
                     radioListY(
                             label("Select Country"),
                             description("Please select a country from the list below"),
-                            options(items),
+                            options(countries),
                             tags(PostalAddress.addressCountry)
                     )
             ),
