@@ -5,14 +5,14 @@ import com.codename1.io.Log;
 import com.codename1.rad.controllers.ApplicationController;
 import com.codename1.rad.controllers.ControllerEvent;
 import com.codename1.rad.nodes.ActionNode;
-import com.codename1.rad.ui.ViewContext;
-import com.codename1.twitterui.controllers.SettingsFormController;
 import com.codename1.twitterui.models.TWTUserProfile;
 import com.codename1.twitterui.models.TWTUserProfileImpl;
 import com.codename1.twitterui.views.TWTGlobalTabs;
 import com.codename1.twitterui.views.TWTSideBarView;
 import com.codename1.ui.FontImage;
+import com.familychorelocationtracker.controllers.ManageFamilyFormController;
 import com.familychorelocationtracker.controllers.SettingsPageFormController;
+import com.familychorelocationtracker.providers.EntityListProvider;
 import com.familychorelocationtracker.services.TweetAppClient;
 import com.familychorelocationtracker.views.ChoresPageController;
 import com.familychorelocationtracker.views.HomePageController;
@@ -111,10 +111,22 @@ public class FamilyChoreApp extends ApplicationController {
                     );
                 });
 
-        ActionNode.builder()
-                .label("Settings")
-                .icon(FontImage.MATERIAL_SETTINGS)
+        ActionNode.builder().
+                icon(FontImage.MATERIAL_MANAGE_ACCOUNTS)
+                .label("Manage")
                 .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt ->
+                        System.out.println("Manage was clicked")
+                )
+                .addActionListener(evt -> {
+                    evt.consume();
+                    new ManageFamilyFormController(getCurrentFormController()).show();
+
+                });
+
+        ActionNode.builder()
+                .label("Settings and Privacy")
+                .icon(FontImage.MATERIAL_SETTINGS)
+                .addToController(this, TWTSideBarView.SIDEBAR_SETTINGS_ACTIONS, evt ->
                         System.out.println("Settings was clicked")
                 )
                 .addActionListener(evt -> {
@@ -123,54 +135,8 @@ public class FamilyChoreApp extends ApplicationController {
 
                 });
 
-        ActionNode.builder().
-                icon(FontImage.MATERIAL_MANAGE_ACCOUNTS)
-                .label("Manage")
-                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
-                    System.out.println("Manage was clicked");
-                });
-
         ActionNode.builder()
-                .label("Create new account")
-                .addToController(this, TWTSideBarView.SIDEBAR_TOP_OVERFLOW_MENU, evt -> {
-                });
-
-        ActionNode.builder()
-                .label("Add Existing Account")
-                .addToController(this, TWTSideBarView.SIDEBAR_TOP_OVERFLOW_MENU, evt -> {
-                });
-
-        ActionNode.builder()
-                .label("Sign out")
-                .addToController(this, TWTSideBarView.SIDEBAR_TOP_OVERFLOW_MENU, evt -> {
-                    lookup(TweetAppClient.class).createSignoutRequest().signout().onResult((res, err) -> {
-                        if (err != null) {
-                            Log.e(err);
-                            ToastBar.showErrorMessage("Failed to logout");
-                            return;
-                        }
-                        new WelcomePageController(this).showBack();
-                    });
-                });
-
-        ActionNode.builder()
-                .label("Settings and Privacy")
-                .icon(FontImage.MATERIAL_SETTINGS)
-                .addToController(this, TWTSideBarView.SIDEBAR_SETTINGS_ACTIONS, evt -> {
-                });
-
-        ActionNode.builder()
-                .label("Help Center")
-                .addToController(this, TWTSideBarView.SIDEBAR_SETTINGS_ACTIONS, evt -> {
-                });
-
-//        ActionNode.builder()
-//                .icon(FontImage.MATERIAL_LIGHTBULB_OUTLINE)
-//                .addToController(this, TWTSideBarView.SIDEBAR_BOTTOM_LEFT_ACTIONS, evt -> {
-//                });
-
-
-        ActionNode.builder()
+                .label("  Logout    ")
                 .icon(FontImage.MATERIAL_EXIT_TO_APP)
                 .addToController(this, TWTSideBarView.SIDEBAR_BOTTOM_RIGHT_ACTIONS, evt -> {
                 });
@@ -186,6 +152,8 @@ public class FamilyChoreApp extends ApplicationController {
     protected void onStartController() {
         super.onStartController();
 
+        addLookup(new EntityListProvider());
+
         /**
          * Add a TweetAppClient as a lookup so that it will be available throughout
          * the app via {@link #lookup(Class)}
@@ -193,13 +161,11 @@ public class FamilyChoreApp extends ApplicationController {
         TweetAppClient client = new TweetAppClient();
         addLookup(client);
         if (client.isLoggedIn()) {
-
             // The client is logged in.  We hardcode the userprofile here as me
             // but in real app you would have the profile created based on who is logged in.
             TWTUserProfile userProfile = new TWTUserProfileImpl();
-            userProfile.setName("Bob Smith");
+            userProfile.setName("Evelyn");
             addLookup(TWTUserProfile.class, userProfile);
-
         }
     }
 

@@ -1,15 +1,21 @@
 <?xml version="1.0"?>
-<border xsi:noNamespaceSchemaLocation="HomePage.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<border xsi:noNamespaceSchemaLocation="HomePage.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
     <title hidden="true"/>
 
     <use-taglib class="com.codename1.twitterui.TagLibrary"/>
+
     <import>
         import com.familychorelocationtracker.components.TileComponents;
     </import>
 
+    <tileComponents layout-constraint="center" title="4">
+
+    </tileComponents>
 
     <collapsibleHeader>
-        <twtTitle>
+        <twtTitle>Home
         </twtTitle>
     </collapsibleHeader>
 
@@ -17,10 +23,18 @@
         <twtSideBarView/>
     </sidebar>
 
-    <tileComponents layout-constraint="center" title="6">
-
-    </tileComponents>
-
+<!--    <entityList layout-constraint="center"-->
+<!--                provider="com.familychorelocationtracker.providers.EntityListProvider.class">-->
+<!--        <row-template>-->
+<!--            <border uiid="ListRow">-->
+<!--                <profileAvatar size="1.5rem" layout-constraint="west"/>-->
+<!--                <radLabel tag="Person.name" layout-constraint="center"-->
+<!--                          component.style.font="native:MainRegular 1rem"-->
+<!--                          component.style.marginLeft="1rem"-->
+<!--                />-->
+<!--            </border>-->
+<!--        </row-template>-->
+<!--    </entityList>-->
 
     <globalTabs layout-constraint="south" selectedTab="com.familychorelocationtracker.FamilyChoreApp.HOME_TAB"/>
 

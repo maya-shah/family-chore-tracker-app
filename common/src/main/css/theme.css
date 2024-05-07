@@ -31,7 +31,6 @@ TwitterButton {
 }
 
 
-
 TwitterHeading1 {
     font-size: 1.5rem;
     font-family: 'native:MainBold';
@@ -163,3 +162,22 @@ TweetAction {
 
 }
 
+Tile {
+    border-radius: 3mm;
+    padding: 0;
+}
+
+HomePage {
+    background-color: #e4e4e3;
+}
+
+ButtonTitle {
+    font-size: 40px;
+}
+
+ListRow {
+    background-color: white;
+    border:none;
+    border-bottom: 0.5pt solid #ccc;
+    padding: 0.7rem;
+}

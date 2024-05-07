@@ -70,28 +70,28 @@ public class LocationsPageView extends Container {
 
         addPersonMarker(mapComponent, new Marker(
                 "Evelyn",
-                0xFFA500,
+                0x990000,
                 "The Old Firehouse, Exeter EX4 4EP",
                 new Coord(50.72674939030453, -3.527954379581619)
         ));
 
         addPersonMarker(mapComponent, new Marker(
                 "Liam",
-                0x00FF00,
+                0x000099,
                 "Princesshay, Exeter, EX1 1QA",
                 new Coord(50.72440621256099, -3.5278936762219018)
         ));
 
         addPersonMarker(mapComponent, new Marker(
                 "Jasmine",
-                0xFF69B4,
+                0x99004d,
                 "Exeter Quay, Exeter, EX2 4AN",
                 new Coord(50.71886113714453, -3.5293724152158403)
         ));
 
         addPersonMarker(mapComponent, new Marker(
                 "Lucas",
-                0x00FFFF,
+                0x1a3300,
                 "RAMM, Queen Street, Exeter, EX4 3RX",
                 new Coord(50.72527398274362, -3.5323839083222404)
         ));
@@ -174,7 +174,7 @@ public class LocationsPageView extends Container {
 
     // Method to draw a circular marker
     private void drawCircularMarker(Graphics g, int x, int y, int color) {
-        int radius = 18; // Adjust the size of the marker as needed
+        int radius = 19; // Adjust the size of the marker as needed
         g.setColor(color); // Set marker color to red
         g.fillArc(x - radius, y - radius, radius * 2, radius * 2, 0, 360);
     }

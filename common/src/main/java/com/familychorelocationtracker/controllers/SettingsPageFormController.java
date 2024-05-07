@@ -9,16 +9,14 @@ import com.codename1.twitterui.models.TWTUserProfile;
 import com.codename1.twitterui.views.TWTSettingsForm;
 import com.codename1.ui.Label;
 
-import static com.codename1.rad.ui.UI.action;
-import static com.codename1.rad.ui.UI.*;
-
 import com.codename1.rad.models.PropertySelector;
 import com.codename1.rad.schemas.Thing;
 import com.codename1.rad.schemas.PostalAddress;
 import com.codename1.ui.list.DefaultListModel;
 
 import java.util.Arrays;
-import java.util.Collection;
+
+import static com.codename1.rad.ui.UI.*;
 
 
 public class SettingsPageFormController extends FormController {
@@ -66,7 +64,9 @@ public class SettingsPageFormController extends FormController {
 
         setTitle("Settings and Privacy");
 
-        getCurrentFormController().setTitleComponent(new Label(" "));
+        view.setUIID("SettingsPage");
+
+        getCurrentFormController().setTitleComponent(new Label());
 
         setView(view);
     }
