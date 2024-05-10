@@ -2,16 +2,15 @@ package com.familychorelocationtracker.controllers;
 
 import com.codename1.rad.controllers.Controller;
 import com.codename1.rad.controllers.FormController;
+import com.codename1.rad.models.PropertySelector;
 import com.codename1.rad.nodes.ActionNode;
 import com.codename1.rad.nodes.ViewNode;
 import com.codename1.rad.schemas.Person;
+import com.codename1.rad.schemas.PostalAddress;
+import com.codename1.rad.schemas.Thing;
 import com.codename1.twitterui.models.TWTUserProfile;
 import com.codename1.twitterui.views.TWTSettingsForm;
 import com.codename1.ui.Label;
-
-import com.codename1.rad.models.PropertySelector;
-import com.codename1.rad.schemas.Thing;
-import com.codename1.rad.schemas.PostalAddress;
 import com.codename1.ui.list.DefaultListModel;
 
 import java.util.Arrays;
@@ -50,12 +49,19 @@ public class SettingsPageFormController extends FormController {
             yourTwitterData = action(
                     label("Your twitter data")
             ),
+            locationSharing = action(
+                    label("Location sharing"),
+                    toggleSwitch(
+                            tags(TWTUserProfile.addressCountry),
+                            description("Share your location with your family members"))
+            ),
             security = action(
                     label("Security")
             ),
             deactivate = action(
                     label("Deactivate your account")
             );
+
 
     public SettingsPageFormController(Controller parent) {
         super(parent);
@@ -73,7 +79,6 @@ public class SettingsPageFormController extends FormController {
 
     @Override
     protected ViewNode createViewNode() {
-        this.hasBackCommand();
         return new ViewNode(
                 section(
                         label("Login and Security"),
@@ -81,12 +86,11 @@ public class SettingsPageFormController extends FormController {
                 ),
                 section(
                         label("Data and permissions"),
-                        country, yourTwitterData, security
+                        security, locationSharing
                 ),
                 section(
                         deactivate
                 )
         );
     }
-
 }

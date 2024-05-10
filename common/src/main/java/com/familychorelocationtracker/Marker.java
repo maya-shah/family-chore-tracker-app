@@ -5,11 +5,18 @@ import com.codename1.maps.Coord;
 
 
 public class Marker {
-    private Coord coord;
+    private String name;
     private int color;
     private String description;
-    private String name;
+    private Coord coord;
 
+    /**
+     * Constructor for the Marker class
+     * @param name T
+     * @param color
+     * @param description
+     * @param coord
+     */
     public Marker(String name, int color, String description, Coord coord) {
         this.name = name;
         this.color = color;

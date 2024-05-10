@@ -1,4 +1,4 @@
-package com.familychorelocationtracker;
+package com.familychorelocationtracker.views;
 
 import com.codename1.maps.BoundingBox;
 import com.codename1.maps.Coord;
@@ -15,22 +15,19 @@ import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.LayeredLayout;
+import com.codename1.ui.plaf.Style;
+import com.familychorelocationtracker.Marker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
 public class LocationsPageView extends Container {
-    private int zoom;
-
     private final MapComponent mapComponent = new MapComponent(new OpenStreetMapProvider());
-
     private final Container legendContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-
     private final List<Marker> markers = new ArrayList<>();
-
     private final List<Coord> markerCoordinates = new ArrayList<>();
+    private int zoom;
 
 
     public LocationsPageView() {
@@ -48,8 +45,8 @@ public class LocationsPageView extends Container {
         legendContainer.setScrollableY(true);
 
 
-        Container mapContainer = LayeredLayout.encloseIn(
-                BorderLayout.centerTotalBelow(mapComponent), BorderLayout.east(BorderLayout.north(buttons)), BorderLayout.center(colorLabel));
+        Container mapContainer = LayeredLayout.encloseIn(BorderLayout.centerTotalBelow(mapComponent),
+                BorderLayout.east(BorderLayout.north(buttons)), BorderLayout.center(colorLabel));
 
 
         mapContainer.setPreferredSize(new Dimension(400, 1150));
@@ -68,33 +65,25 @@ public class LocationsPageView extends Container {
 
         mapComponent.setZoomLevel(zoom);
 
-        addPersonMarker(mapComponent, new Marker(
-                "Evelyn",
-                0x990000,
-                "The Old Firehouse, Exeter EX4 4EP",
-                new Coord(50.72674939030453, -3.527954379581619)
-        ));
+        addPersonMarker(mapComponent,
+                new Marker("Evelyn", 0x990000, "The Old Firehouse, Exeter EX4 4EP",
+                        new Coord(50.72674939030453, -3.527954379581619))
+        );
 
-        addPersonMarker(mapComponent, new Marker(
-                "Liam",
-                0x000099,
-                "Princesshay, Exeter, EX1 1QA",
-                new Coord(50.72440621256099, -3.5278936762219018)
-        ));
+        addPersonMarker(mapComponent,
+                new Marker("Liam", 0x000099, "Princesshay, Exeter, EX1 1QA",
+                        new Coord(50.72440621256099, -3.5278936762219018))
+        );
 
-        addPersonMarker(mapComponent, new Marker(
-                "Jasmine",
-                0x99004d,
-                "Exeter Quay, Exeter, EX2 4AN",
-                new Coord(50.71886113714453, -3.5293724152158403)
-        ));
+        addPersonMarker(mapComponent,
+                new Marker("Jasmine", 0x99004d, "Exeter Quay, Exeter, EX2 4AN",
+                        new Coord(50.71886113714453, -3.5293724152158403))
+        );
 
-        addPersonMarker(mapComponent, new Marker(
-                "Lucas",
-                0x1a3300,
-                "RAMM, Queen Street, Exeter, EX4 3RX",
-                new Coord(50.72527398274362, -3.5323839083222404)
-        ));
+        addPersonMarker(mapComponent,
+                new Marker("Lucas", 0x1a3300, "RAMM, Queen Street, Exeter, EX4 3RX",
+                        new Coord(50.72527398274362, -3.5323839083222404))
+        );
 
         int index = 0;
 
@@ -106,8 +95,6 @@ public class LocationsPageView extends Container {
 
 
         mapComponent.zoomTo(BoundingBox.create(markerCoordinates.toArray(new Coord[0])));
-
-        System.out.println(Arrays.toString(markerCoordinates.toArray(new Coord[0])));
 
     }
 
@@ -162,7 +149,6 @@ public class LocationsPageView extends Container {
     // Method to add a circular marker at a specific location
     private void addPersonMarker(MapComponent map, Marker marker) {
         markers.add(marker);
-//        markers.put(color, new Coord(latitude, longitude));
         markerCoordinates.add(marker.getCoordinate());
 
         int markerX = mapComponent.getPointFromCoord(marker.getCoordinate()).getX();
@@ -180,16 +166,12 @@ public class LocationsPageView extends Container {
     }
 
     private long getDistance(int index) {
-        return MapComponent.distance(markers.get(0).getLatitude(),
-                markers.get(0).getLongitude(),
-                markers.get(index).getLatitude(),
-                markers.get(index).getLongitude());
+        return MapComponent.distance(markers.get(0).getLatitude(), markers.get(0).getLongitude(),
+                markers.get(index).getLatitude(), markers.get(index).getLongitude());
     }
 
     private Container createLegendContainer(Marker marker, int index) {
         Container container = new Container(new BorderLayout());
-
-//        Container leftContainer = new Container(BoxLayout.x());
 
         // Create label for color
         Label colorLabel = new Label();
@@ -205,13 +187,17 @@ public class LocationsPageView extends Container {
         nameLabel.getAllStyles().setPaddingTop(2);
         nameLabel.getUnselectedStyle().setFgColor(0x0000);
 
-
-//        descriptionLabel.getAllStyles().setPadding(5, 5, 0, 0);
-
         // Create label for description
         Label descriptionLabel = new Label(marker.getDescription());
-        descriptionLabel.getAllStyles().setFont(descriptionLabel.getAllStyles().getFont().derive(Display.getInstance().convertToPixels(2), Font.STYLE_PLAIN)); // Set font size to small
-        descriptionLabel.getAllStyles().setPaddingBottom(2);
+
+        Style descriptionStyle = descriptionLabel.getAllStyles();
+
+        descriptionStyle.setPaddingBottom(2);
+
+        // Set font size to small
+        descriptionStyle.setFont(descriptionStyle.getFont().derive(Display.getInstance().convertToPixels(2),
+                Font.STYLE_PLAIN));
+
         // Create label for distance
         Label distanceLabel = new Label(getDistance(index) + "m");
         distanceLabel.setUIID("LegendDistance"); // Set UIID for styling distance label

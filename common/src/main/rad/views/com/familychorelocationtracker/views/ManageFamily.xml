@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<border xsi:noNamespaceSchemaLocation="ManageFamily.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <import>
+        import com.familychorelocationtracker.providers.EntityListProvider;
+    </import>
+
+
+    <title>Manage Family</title>
+
+    <use-taglib class="com.codename1.twitterui.TagLibrary"/>
+
+    <entityList layout-constraint="center"
+                provider="com.familychorelocationtracker.providers.EntityListProvider.class">
+        <row-template>
+            <border uiid="ListRow">
+                <profileAvatar size="1.5rem" layout-constraint="west"/>
+                <radLabel tag="Person.name" layout-constraint="center"
+                          component.style.font="native:MainRegular 1rem"
+                          component.style.marginLeft="1rem"
+                />
+            </border>
+        </row-template>
+    </entityList>
+
+</border>

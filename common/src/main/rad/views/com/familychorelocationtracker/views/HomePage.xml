@@ -8,11 +8,18 @@
 
     <import>
         import com.familychorelocationtracker.components.TileComponents;
+        import com.familychorelocationtracker.components.FamilyListComponent;
     </import>
 
-    <tileComponents layout-constraint="center" title="4">
+    <tileComponents layout-constraint="north" title="4">
+
+        <familyListComponent layout-constraint="south" familyListComponent="Your family members:">
+
+        </familyListComponent>
+
 
     </tileComponents>
+
 
     <collapsibleHeader>
         <twtTitle>Home

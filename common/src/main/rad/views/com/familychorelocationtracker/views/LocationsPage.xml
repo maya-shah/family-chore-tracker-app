@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <import>
-        import com.familychorelocationtracker.LocationsPageView;
+        import com.familychorelocationtracker.views.LocationsPageView;
     </import>
 
     <title>Locations</title>

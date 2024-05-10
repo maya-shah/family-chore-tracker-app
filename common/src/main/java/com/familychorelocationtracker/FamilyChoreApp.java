@@ -1,7 +1,5 @@
 package com.familychorelocationtracker;
 
-import com.codename1.components.ToastBar;
-import com.codename1.io.Log;
 import com.codename1.rad.controllers.ApplicationController;
 import com.codename1.rad.controllers.ControllerEvent;
 import com.codename1.rad.nodes.ActionNode;
@@ -10,15 +8,13 @@ import com.codename1.twitterui.models.TWTUserProfileImpl;
 import com.codename1.twitterui.views.TWTGlobalTabs;
 import com.codename1.twitterui.views.TWTSideBarView;
 import com.codename1.ui.FontImage;
-import com.familychorelocationtracker.controllers.ManageFamilyFormController;
+import com.familychorelocationtracker.controllers.ChoresPageFormController;
 import com.familychorelocationtracker.controllers.SettingsPageFormController;
 import com.familychorelocationtracker.providers.EntityListProvider;
 import com.familychorelocationtracker.services.TweetAppClient;
-import com.familychorelocationtracker.views.ChoresPageController;
 import com.familychorelocationtracker.views.HomePageController;
-import com.familychorelocationtracker.views.InboxPageController;
+import com.familychorelocationtracker.views.ManageFamilyController;
 import com.familychorelocationtracker.views.LocationsPageController;
-import com.familychorelocationtracker.views.WelcomePageController;
 
 import static com.codename1.rad.util.NonNull.with;
 
@@ -39,33 +35,18 @@ public class FamilyChoreApp extends ApplicationController {
             }).
             build();
 
-    public static final ActionNode INBOX_TAB = ActionNode.builder().
-            icon(FontImage.MATERIAL_INBOX).
-            badge("2").
-            addActionListener(evt -> {
-                evt.consume();
-                TWTGlobalTabs.showTab(
-                        evt,
-                        new InboxPageController(ApplicationController.getApplicationController(evt))
-                );
-
-            }).
-            build();
-
     public static final ActionNode CHORES_TAB = ActionNode.builder()
             .icon(FontImage.MATERIAL_TASK)
-            .badge("2")
             .addActionListener(evt -> {
                 evt.consume();
                 TWTGlobalTabs.showTab(
                         evt,
-                        new ChoresPageController(ApplicationController.getApplicationController(evt))
+                        new ChoresPageFormController(ApplicationController.getApplicationController(evt).getCurrentFormController())
                 );
             }).build();
 
     public static final ActionNode LOCATIONS_TAB = ActionNode.builder()
             .icon(FontImage.MATERIAL_LOCATION_ON)
-            .badge("1")
             .addActionListener(evt -> {
                 evt.consume();
                 TWTGlobalTabs.showTab(
@@ -107,7 +88,7 @@ public class FamilyChoreApp extends ApplicationController {
                     evt.consume();
                     TWTGlobalTabs.showTab(
                             evt,
-                            new ChoresPageController(ApplicationController.getApplicationController(evt))
+                            new ChoresPageFormController(getCurrentFormController())
                     );
                 });
 
@@ -119,8 +100,7 @@ public class FamilyChoreApp extends ApplicationController {
                 )
                 .addActionListener(evt -> {
                     evt.consume();
-                    new ManageFamilyFormController(getCurrentFormController()).show();
-
+                    new ManageFamilyController(ApplicationController.getApplicationController(evt));
                 });
 
         ActionNode.builder()
@@ -177,7 +157,7 @@ public class FamilyChoreApp extends ApplicationController {
                 if (lookup(TweetAppClient.class).isLoggedIn()) {
                     new HomePageController(this).show();
                 } else {
-                    new WelcomePageController(this).show();
+                    new HomePageController(this).show();
                 }
             }
 

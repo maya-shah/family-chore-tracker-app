@@ -12,10 +12,10 @@ import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
-import com.familychorelocationtracker.controllers.ManageFamilyFormController;
+import com.familychorelocationtracker.controllers.ChoresPageFormController;
 import com.familychorelocationtracker.controllers.SettingsPageFormController;
-import com.familychorelocationtracker.views.ChoresPageController;
 import com.familychorelocationtracker.views.LocationsPageController;
+import com.familychorelocationtracker.views.ManageFamilyController;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -71,29 +71,23 @@ public class TileComponents extends Container {
                     );
                 });
 
-            }
-
-            else if (Objects.equals(title.getText(), "Chores")) {
+            } else if (Objects.equals(title.getText(), "Chores")) {
                 title.addActionListener(evt -> {
                     evt.consume();
                     TWTGlobalTabs.showTab(
                             evt,
-                            new ChoresPageController(ApplicationController.getApplicationController(evt))
+                            new ChoresPageFormController(ApplicationController.getApplicationController(evt).getCurrentFormController())
                     );
                 });
-            }
-
-            else if (Objects.equals(title.getText(), "Settings")) {
+            } else if (Objects.equals(title.getText(), "Settings")) {
                 title.addActionListener(evt -> {
                     evt.consume();
                     new SettingsPageFormController(FormController.getCurrentFormController()).show();
                 });
-            }
-
-            else if (Objects.equals(title.getText(), "Manage")) {
+            } else if (Objects.equals(title.getText(), "Manage")) {
                 title.addActionListener(evt -> {
                     evt.consume();
-                    new ManageFamilyFormController(FormController.getCurrentFormController()).show();
+                    new ManageFamilyController(ApplicationController.getApplicationController(evt));
                 });
             }
 
@@ -107,7 +101,7 @@ public class TileComponents extends Container {
 
             innerTile.add(BoxLayout.encloseYCenter(BoxLayout.encloseXCenter(icon), title));
 
-            tile.add(BorderLayout.centerCenter(innerTile));
+            tile.add(BorderLayout.centerAbsolute(innerTile));
 
             tileComponents.add(tile);
         }
