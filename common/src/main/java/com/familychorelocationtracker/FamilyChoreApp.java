@@ -94,7 +94,7 @@ public class FamilyChoreApp extends ApplicationController {
 
         ActionNode.builder().
                 icon(FontImage.MATERIAL_MANAGE_ACCOUNTS)
-                .label("Manage")
+                .label("Manage Family")
                 .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt ->
                         System.out.println("Manage was clicked")
                 )
