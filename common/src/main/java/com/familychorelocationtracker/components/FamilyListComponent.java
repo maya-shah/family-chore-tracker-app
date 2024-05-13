@@ -1,11 +1,9 @@
 package com.familychorelocationtracker.components;
 
-import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
-import com.familychorelocationtracker.views.ManageFamilyController;
 
 import java.util.Arrays;
 import java.util.HashMap;
