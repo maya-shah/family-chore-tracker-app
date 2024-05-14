@@ -145,6 +145,9 @@ public class FamilyChoreApp extends ApplicationController {
             // but in real app you would have the profile created based on who is logged in.
             TWTUserProfile userProfile = new TWTUserProfileImpl();
             userProfile.setName("Evelyn");
+            userProfile.setQualityFilter(true);
+            userProfile.setCountry("United Kingdom");
+            userProfile.setIdentifier("Evelyn");
             addLookup(TWTUserProfile.class, userProfile);
         }
     }
