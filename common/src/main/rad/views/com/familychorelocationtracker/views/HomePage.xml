@@ -30,18 +30,6 @@
         <twtSideBarView/>
     </sidebar>
 
-<!--    <entityList layout-constraint="center"-->
-<!--                provider="com.familychorelocationtracker.providers.EntityListProvider.class">-->
-<!--        <row-template>-->
-<!--            <border uiid="ListRow">-->
-<!--                <profileAvatar size="1.5rem" layout-constraint="west"/>-->
-<!--                <radLabel tag="Person.name" layout-constraint="center"-->
-<!--                          component.style.font="native:MainRegular 1rem"-->
-<!--                          component.style.marginLeft="1rem"-->
-<!--                />-->
-<!--            </border>-->
-<!--        </row-template>-->
-<!--    </entityList>-->
 
     <globalTabs layout-constraint="south" selectedTab="com.familychorelocationtracker.FamilyChoreApp.HOME_TAB"/>
 
