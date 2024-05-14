@@ -64,9 +64,7 @@ public class FamilyChoreApp extends ApplicationController {
         ActionNode.builder()
                 .label("Home")
                 .icon(FontImage.MATERIAL_HOME)
-                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> {
-                    System.out.println("Home was clicked");
-                });
+                .addToController(this, TWTSideBarView.SIDEBAR_ACTIONS, evt -> System.out.println("Home was clicked"));
 
         ActionNode.builder()
             .label("Locations")
@@ -134,7 +132,7 @@ public class FamilyChoreApp extends ApplicationController {
 
         addLookup(new EntityListProvider());
 
-        /**
+        /*
          * Add a TweetAppClient as a lookup so that it will be available throughout
          * the app via {@link #lookup(Class)}
          */
@@ -157,11 +155,7 @@ public class FamilyChoreApp extends ApplicationController {
         with(evt, StartEvent.class, startEvent -> {
             if (!startEvent.isShowingForm()) {
                 startEvent.setShowingForm(true);
-                if (lookup(TweetAppClient.class).isLoggedIn()) {
-                    new HomePageController(this).show();
-                } else {
-                    new HomePageController(this).show();
-                }
+                new HomePageController(this).show();
             }
 
         });
