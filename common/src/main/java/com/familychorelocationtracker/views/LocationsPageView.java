@@ -36,8 +36,8 @@ public class LocationsPageView extends Container {
         Label colorLabel = new Label();
         colorLabel.getAllStyles().setBgColor(0x0000);
         colorLabel.getAllStyles().setBgTransparency(5);
-        colorLabel.setPreferredW(2000); // Set preferred width for color label
-        colorLabel.setPreferredH(1200); // Set preferred width for color label
+        colorLabel.setPreferredW(2000);
+        colorLabel.setPreferredH(1200);
         colorLabel.getAllStyles().setMargin(0, 0, 0, 0);
 
         Container buttons = getButtons();
@@ -160,8 +160,8 @@ public class LocationsPageView extends Container {
 
     // Method to draw a circular marker
     private void drawCircularMarker(Graphics g, int x, int y, int color) {
-        int radius = 19; // Adjust the size of the marker as needed
-        g.setColor(color); // Set marker color to red
+        int radius = 19;
+        g.setColor(color);
         g.fillArc(x - radius, y - radius, radius * 2, radius * 2, 0, 360);
     }
 
@@ -177,8 +177,8 @@ public class LocationsPageView extends Container {
         Label colorLabel = new Label();
         colorLabel.getAllStyles().setBgColor(marker.getColor());
         colorLabel.getAllStyles().setBgTransparency(255);
-        colorLabel.setPreferredW(40); // Set preferred width for color label
-        colorLabel.setPreferredH(210); // Set preferred width for color label
+        colorLabel.setPreferredW(40);
+        colorLabel.setPreferredH(210);
 
         colorLabel.getAllStyles().setMargin(0, 5, 0, 5);
 
