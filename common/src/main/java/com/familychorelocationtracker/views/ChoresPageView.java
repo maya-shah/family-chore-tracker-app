@@ -72,7 +72,6 @@ public class ChoresPageView extends Form {
         addButton.addActionListener(e -> {
             String newChore = newChoreField.getText().trim();
             if (!newChore.isEmpty()) {
-                // Assigning the chore to a default family member "John" for demonstration
                 addChore(newChore);
                 newChoreField.clear();
             }
