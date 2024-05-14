@@ -52,7 +52,7 @@ public class SettingsPageFormController extends FormController {
             locationSharing = action(
                     label("Location sharing"),
                     toggleSwitch(
-                            tags(Person.homeLocation),
+                            tags(TWTUserProfile.qualityFilter),
                             description("Share your location with your family members"))
             ),
             security = action(
