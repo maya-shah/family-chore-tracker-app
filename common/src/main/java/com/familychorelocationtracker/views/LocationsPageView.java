@@ -89,7 +89,6 @@ public class LocationsPageView extends Container {
 
         for (Marker marker : markers) {
             legendContainer.add(createLegendContainer(marker, index));
-//            addLegendItem(legendContainer, marker, index);
             index++;
         }
 
