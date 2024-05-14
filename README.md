@@ -1,34 +1,18 @@
 # Family Chore & Location Tracker App
 
-This is a multi-module maven project for building a Codename One application. Codename One applications written in Java and/or Kotlin, and are built as native apps and can be built and deployed to iOS, Android, Mac, Windows, Linux, and also to the Web.
+This project was developed for ECM3401 Individual Literature Review & Project for evaluating [IBM's Coercive Control 
+Resistant Design principles](https://www.ibm.com/policy/wp-content/uploads/2020/05/CoerciveControlResistantDesign.pdf) in smart-home technologies. 
 
-## Getting Started
+## Information for how to run this app:
 
-### Java
+This project was created using IntelliJ and should be run in IntelliJ for the best experience. 
 
-If you plan to use Java as your primary language, https://shannah.github.io/cn1-maven-archetypes/cn1app-archetype-tutorial/getting-started.html[start here].
+Open the project in IntelliJ and press run to see the app running in the Codename One simulator.
 
-### Kotlin
+This project uses JDK 11 and Maven. 
 
-If you plan to use Kotlin as your primary language, https://shannah.github.io/cn1app-archetype-kotlin-template/getting-started.html[start here].
+The main files that contain the back-end and some front-end content of the app are located within the 
+`common/src/main/java/com/familychorelocationtracker` directory. 
 
-
-## Eclipse Users
-
-IMPORTANT: If you use Eclipse as your IDE, **read this first**
-
-The _tools/eclipse_ directory contains eclipse ".launch" files that will add common Maven goals as menu items inside Eclipse.
-
-**After importing this project into Eclipse, you should import the launch files.**
-
-## NetBeans Users
-
-This project is a multi-module Maven project that was generated from a Maven archetype.
-
-## IntelliJ Users
-
-The project should work in IntelliJ out of the box.  No need to copy any files.
-
-## Help and Support
-
-See the https://www.codenameone.com[Codename One Web Site].
+The XML files for the app are located within the `common/src/main/rad/views/com/familychorelocationtracker/views` 
+directory.
