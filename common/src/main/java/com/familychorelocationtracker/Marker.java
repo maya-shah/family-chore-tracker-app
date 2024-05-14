@@ -12,10 +12,10 @@ public class Marker {
 
     /**
      * Constructor for the Marker class
-     * @param name T
-     * @param color
-     * @param description
-     * @param coord
+     * @param name to represent the name of a family member
+     * @param color to represent the hexadecimal color for a marker and legend item
+     * @param description where the family member is for the legend
+     * @param coord longitude and latitude coordinated for the location of the family member
      */
     public Marker(String name, int color, String description, Coord coord) {
         this.name = name;
