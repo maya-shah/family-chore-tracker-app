@@ -20,7 +20,7 @@ import static com.codename1.rad.ui.UI.*;
 
 public class SettingsPageFormController extends FormController {
     private static final DefaultListModel<String> countries = new DefaultListModel<>
-            (Arrays.asList("Canada", "United States", "Mexico", "Spain", "England", "France"));
+            (Arrays.asList("United Kingdom", "Canada", "United States", "Mexico", "Spain", "England", "France"));
 
     public static final ActionNode username = action(
             label("Username"),
@@ -46,13 +46,13 @@ public class SettingsPageFormController extends FormController {
                             tags(PostalAddress.addressCountry)
                     )
             ),
-            yourTwitterData = action(
-                    label("Your twitter data")
+            yourData = action(
+                    label("Your data")
             ),
             locationSharing = action(
                     label("Location sharing"),
                     toggleSwitch(
-                            tags(TWTUserProfile.addressCountry),
+                            tags(Person.homeLocation),
                             description("Share your location with your family members"))
             ),
             security = action(
@@ -86,7 +86,7 @@ public class SettingsPageFormController extends FormController {
                 ),
                 section(
                         label("Data and permissions"),
-                        security, locationSharing
+                        country, security, locationSharing, yourData
                 ),
                 section(
                         deactivate
